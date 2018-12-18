@@ -1,0 +1,89 @@
+<% include partials/_header %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td>n°</td>
+            <td>Name</td>
+            <td>Age</td>
+            <td>Famille</td>
+            <td>Race</td>
+            <td>Nouriture</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (data) { %> <% for(var i = 0; i < data.length; i++) { %>
+          <tr>
+            <td><%= (i + 1) %></td>
+            <td><%= data[i].nom %></td>
+            <td><%= data[i].age %></td>
+            <td><%= data[i].famille %></td>
+            <td><%= data[i].race %></td>
+            <td><%= data[i].nouriture %></td>
+            <td>
+              <a href="/update/<%= data[i].id %>" class="info">Modifier </a>
+              <a href="/delete/<%= data[i].id %>" class="danger"> Supprimer </a>
+            </td>
+          </tr>
+          <% } %> <% } %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4">
+      <div class="card-body">
+        <form action="/add" method="POST">
+          <div class="form-group">
+            <input
+              type="text"
+              name="nom"
+              placeholder="Nom"
+              class="form-control"
+              autofocus
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              name="age"
+              placeholder="Age"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              name="famille"
+              placeholder="Famille"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              name="race"
+              placeholder="Race"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              name="nouriture"
+              placeholder="Nouriture"
+              class="form-control"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            Ajouter Marsupilami
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include partials/_footer %>
